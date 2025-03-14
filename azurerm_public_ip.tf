@@ -9,13 +9,13 @@
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip
 
-resource "azurerm_public_ip" "demo" {
-  name                = "demo-public-ip"
-  location            = azurerm_resource_group.demo.location
-  resource_group_name = azurerm_resource_group.demo.name
+resource "azurerm_public_ip" "example" {
+  name                = "example-public-ip"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
   allocation_method   = "Static"
 
   tags = {
-    environment = "demo"
+    environment = "example"
   }
 }

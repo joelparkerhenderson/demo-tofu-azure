@@ -6,7 +6,7 @@
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
 
-resource "azurerm_resource_group" "demo" {
-  name     = "demo-resource-group"
+resource "azurerm_resource_group" "example" {
+  name     = "example-resource-group"
   location = "East US"
 }

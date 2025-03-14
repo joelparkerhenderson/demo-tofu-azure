@@ -1,4 +1,4 @@
-# Demo Tofu Azure
+# example Tofu Azure
 
 Demonstration of OpenTofu with Microsoft Azure.
 
@@ -43,6 +43,7 @@ Upgrade:
 ```sh
 az upgrade
 ```
+
 
 ## Azure login
 
@@ -108,12 +109,52 @@ SyntaxWarning: invalid escape sequence …
 
 https://learn.microsoft.com/en-us/azure/developer/terraform/create-resource-group
 
-Create these files:
+Create the starter files:
 
 * [providers.tf](providers.tf)
-* [variables.tf](variables.tf)
 * [main.tf](main.tf)
 * [outputs.tf](outputs.tf)
+* [variables.tf](variables.tf)
+* [random_pet.tf](random_pet.tf)
+
+Create networking files:
+
+* [azurerm_public_ip.tf](azurerm_public_ip.tf)
+* [azurerm_resource_group.tf](azurerm_resource_group.tf)
+* [azurerm_virtual_network.tf](azurerm_virtual_network.tf)
+* [azurerm_network_interface.tf](azurerm_network_interface.tf)
+* [azurerm_network_security_group.tf](azurerm_network_security_group.tf)
+
+Create virtual machine files:
+
+* [azurerm_linux_virtual_machine.tf](azurerm_linux_virtual_machine.tf)
+* [azurerm_windows_virtual_machine.tf](azurerm_windows_virtual_machine.tf)
+
+Create  database files:
+
+* [azurerm_postgresql_server.tf](azurerm_postgresql_server.tf)
+* [azurerm_postgresql_database.tf](azurerm_postgresql_database.tf)
+
+
+## Create a security key
+
+Create your local security key that will be involved in the Linux virtual machine.
+
+For this demonstration, you can create a low-security key with no password and plain text.
+
+Run:
+
+```sh
+ssh-keygen -t rsa -b 4096 -C "example@example.com" -q -N "" -f id_rsa
+```
+
+The output is two files:
+
+* [id_rsa](id_rsa) is your private key; this stays on you local system.
+
+* [id_rsa.pub] is your public key; this gets sent to the Linux virtual server.
+
+If you are working on a production project, then you should instead generate your RSA key with a strong password and strong encryption.
 
 
 ## tofu init
@@ -130,12 +171,12 @@ Output:
 Initializing the backend...
 
 Initializing provider plugins...
-- Finding hashicorp/azurerm versions matching "~> 3.0"...
 - Finding hashicorp/random versions matching "~> 3.0"...
-- Installing hashicorp/azurerm v3.117.1...
-- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
-- Installing hashicorp/random v3.7.1...
-- Installed hashicorp/random v3.7.1 (signed, key ID 0C0AF313E5FD9F80)
+- Finding hashicorp/time versions matching "0.9.1"...
+- Finding hashicorp/azurerm versions matching "~> 3.0"...
+- Using previously-installed hashicorp/random v3.7.1
+- Using previously-installed hashicorp/time v0.9.1
+- Using previously-installed hashicorp/azurerm v3.117.1
 
 Providers are signed by their developers.
 If you'd like to know more about provider signing, you can read about it here:
