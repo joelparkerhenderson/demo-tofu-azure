@@ -9,8 +9,6 @@ terraform {
       version = "~>3.0"
     }
   }
-}
-
-provider "azurerm" {
-  features {}
+  # Optional: Set the backend to store the state file
+  backend "azurerm" {}
 }
